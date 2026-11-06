@@ -2,6 +2,7 @@
 :root {
   --accent: #ff6b35;
   --accent-light: #ffe8de;
+  --accent-strong: #c2410c; /* darker orange for text and buttons, passes contrast checks */
   --bg: #f6f7f8;
   --surface: #ffffff;
   --border: #d0d4d9;

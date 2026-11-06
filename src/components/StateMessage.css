@@ -1,0 +1,89 @@
+/* shared look for the error and empty boxes */
+.state {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 40px 24px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  animation: fade-in 0.2s ease;
+}
+
+.state__icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--bg);
+  color: var(--muted);
+}
+
+.state--error .state__icon {
+  background: #fdecec;
+  color: var(--error);
+}
+
+.state__title {
+  margin: 8px 0 0;
+  font-size: 1.1rem;
+}
+
+.state__text {
+  margin: 0;
+  max-width: 320px;
+  color: var(--muted);
+}
+
+.state__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.btn {
+  padding: 10px 22px;
+  border: 2px solid var(--accent-strong);
+  border-radius: 999px;
+  background: var(--accent-strong);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.btn:hover {
+  filter: brightness(0.92);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--accent-strong);
+}
+
+/* looks like a link but is a button, since it runs code instead of going to a url */
+.link-btn {
+  border: none;
+  background: none;
+  color: var(--accent-strong);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

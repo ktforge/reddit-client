@@ -1,8 +1,36 @@
 import PostCard from './PostCard.jsx';
+import PostSkeleton from './PostSkeleton.jsx';
+import ErrorMessage from './ErrorMessage.jsx';
+import EmptyState from './EmptyState.jsx';
 import './PostList.css';
 
-// stacks the post cards, loading and empty states come in step 5
-function PostList({ posts }) {
+// picks what to show: skeletons, an error, an empty message, or the posts
+function PostList({ posts, status, onRetry, onHome, emptyTitle }) {
+  if (status === 'loading') {
+    return (
+      <section className="post-list" aria-busy="true" aria-label="Loading posts">
+        {[1, 2, 3].map((n) => (
+          <PostSkeleton key={n} />
+        ))}
+      </section>
+    );
+  }
+
+  if (status === 'failed') {
+    return <ErrorMessage onRetry={onRetry} onHome={onHome} />;
+  }
+
+  if (posts.length === 0) {
+    return (
+      <EmptyState
+        title={emptyTitle}
+        text="Try another community or check back later."
+        actionLabel="Back to Home"
+        onAction={onHome}
+      />
+    );
+  }
+
   return (
     <section className="post-list" aria-label="Posts">
       {posts.map((postView) => (

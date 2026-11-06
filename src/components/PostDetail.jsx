@@ -1,4 +1,5 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import EmptyState from './EmptyState.jsx';
 import PostCard from './PostCard.jsx';
 import Comment from './Comment.jsx';
 import { mockPosts } from '../data/mockPosts.js';
@@ -8,14 +9,18 @@ import './PostDetail.css';
 
 // full post and its comment thread, picked by the :id in the url
 function PostDetail() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const postView = mockPosts.find((p) => p.post.id === Number(id)); // url params are strings
 
   if (!postView) {
     return (
-      <p>
-        Post not found. <Link to="/">Back to Home</Link>
-      </p>
+      <EmptyState
+        title="Post not found"
+        text="It may have been removed, or the link is wrong."
+        actionLabel="Back to Home"
+        onAction={() => navigate('/')}
+      />
     );
   }
 

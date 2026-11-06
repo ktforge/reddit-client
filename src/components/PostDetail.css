@@ -4,7 +4,7 @@
 }
 
 .detail__back {
-  color: var(--accent);
+  color: var(--accent-strong);
   font-size: 0.9rem;
   font-weight: 700;
   text-decoration: none;
