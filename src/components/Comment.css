@@ -30,3 +30,10 @@
   padding-left: 16px;
   border-left: 2px solid var(--border);
 }
+
+/* tighter indent on phones so deep threads still have room */
+@media (max-width: 639px) {
+  .comment__replies {
+    padding-left: 10px;
+  }
+}

@@ -1,6 +1,26 @@
+/* the post page fades in when you open it */
 .detail {
   display: grid;
   gap: 16px;
+  animation: page-in 0.25s ease;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* a light line between top level comments */
+.comment-list > .comment + .comment {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--bg);
 }
 
 .detail__back {

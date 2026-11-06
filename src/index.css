@@ -23,3 +23,20 @@
 body {
   margin: 0;
 }
+
+/* one clear focus ring for keyboard users everywhere */
+:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+/* people who turn off motion in their system settings get no animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

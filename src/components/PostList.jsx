@@ -42,8 +42,8 @@ function PostList({
 
   return (
     <section className="post-list" aria-label="Posts">
-      {posts.map((postView) => (
-        <PostCard key={postView.post.id} postView={postView} />
+      {posts.map((postView, index) => (
+        <PostCard key={postView.post.id} postView={postView} index={index} />
       ))}
     </section>
   );
