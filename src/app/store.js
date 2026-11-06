@@ -1,6 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
+import postsReducer from '../features/posts/postsSlice.js';
 
-// slices for posts, subreddits, and comments get added here later
+// comments get their own slice in the next step
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    posts: postsReducer,
+  },
 });
