@@ -1,0 +1,39 @@
+.detail {
+  display: grid;
+  gap: 16px;
+}
+
+.detail__back {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.detail__back:hover {
+  text-decoration: underline;
+}
+
+.detail__comments {
+  padding: 16px 20px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.detail__comments h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.detail__none {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+/* strips the default bullets and indent */
+.comment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

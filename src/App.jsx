@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import CommunityList from './components/CommunityList.jsx';
 import Drawer from './components/Drawer.jsx';
 import PostList from './components/PostList.jsx';
+import PostDetail from './components/PostDetail.jsx';
 import { mockPosts } from './data/mockPosts.js';
 import './App.css';
 
@@ -10,10 +12,13 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeCommunity, setActiveCommunity] = useState(null); // null means home
 
-  // picking a community also closes the drawer on mobile
+  const navigate = useNavigate();
+
+  // picking a community closes the drawer and goes back to the feed
   const handleSelect = (name) => {
     setActiveCommunity(name);
     setMenuOpen(false);
+    navigate('/');
   };
 
   // home shows everything, otherwise only the picked community
@@ -29,7 +34,10 @@ function App() {
       </Drawer>
       <div className="layout">
         <main>
-          <PostList posts={posts} />
+          <Routes>
+            <Route path="/" element={<PostList posts={posts} />} />
+            <Route path="/post/:id" element={<PostDetail />} />
+          </Routes>
         </main>
         <aside className="layout__sidebar">
           <CommunityList active={activeCommunity} onSelect={handleSelect} />

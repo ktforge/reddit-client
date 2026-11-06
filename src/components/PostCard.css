@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   display: flex;
   gap: 12px;
   padding: 16px;
@@ -104,4 +105,42 @@
   .card__footer-votes {
     display: inline;
   }
+}
+
+.card__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* stretches the title link over the whole card so any spot is clickable */
+.card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+}
+
+/* keyboard users see a ring around the whole card */
+.card:has(.card__link:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.card__link:focus-visible {
+  outline: none;
+}
+
+/* the detail page card doesn't lift, since it isn't a link */
+.card--full:hover {
+  border-color: var(--border);
+  box-shadow: none;
+  transform: none;
+}
+
+/* full posts show all their text instead of three lines */
+.card__text--full {
+  display: block;
+  margin-top: 12px;
+  color: var(--text);
+  overflow: visible;
 }

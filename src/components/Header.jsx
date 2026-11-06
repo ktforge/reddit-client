@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar.jsx';
 import './Header.css';
 
@@ -5,10 +6,10 @@ import './Header.css';
 function Header({ onMenuClick }) {
   return (
     <header className="header">
-      <a href="/" className="header__logo">
+      <Link to="/" className="header__logo">
         <span className="header__dot" aria-hidden="true"></span>
         RedditLite
-      </a>
+      </Link>
       <SearchBar />
       <button
         className="header__menu"
