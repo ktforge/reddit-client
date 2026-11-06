@@ -26,9 +26,10 @@ describe('PostCard', () => {
     expect(screen.queryByText(/\*\*/)).not.toBeInTheDocument();
   });
 
-  it('renders markdown and drops the link on the full post', () => {
+  it('renders markdown and drops the link on the full post', async () => {
     renderWithProviders(<PostCard postView={textPost} full />);
-    expect(screen.getByText('Hot-swap').tagName).toBe('STRONG');
+    // markdown loads lazily, so wait for it with findBy instead of getBy
+    expect((await screen.findByText('Hot-swap')).tagName).toBe('STRONG');
     expect(screen.queryByRole('link', { name: textPost.post.name })).not.toBeInTheDocument();
   });
 });

@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>reddit-client</title>
+    <meta
+      name="description"
+      content="RedditLite: a fast, Reddit-style reader for Lemmy. Browse hot posts, search, and read comment threads."
+    />
+    <meta name="theme-color" content="#ff6b35" />
+    <!-- opens the connection to the api early so the first posts load faster -->
+    <link rel="preconnect" href="https://lemmy.world" crossorigin />
+    <title>RedditLite</title>
   </head>
   <body>
     <div id="root"></div>

@@ -1,6 +1,8 @@
+import { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { formatScore, timeAgo, stripMarkdown } from '../utils/format.js';
-import Markdown from './Markdown.jsx';
+// markdown is only needed on full posts, so it loads in its own file the first time one opens
+const Markdown = lazy(() => import('./Markdown.jsx'));
 import './PostCard.css';
 
 // one post in the feed: votes, title, community, media or text, and footer
@@ -45,7 +47,9 @@ function PostCard({ postView, full = false, index = 0 }) {
         )}
         {full && post.body && (
           <div className="card__text card__text--full">
-            <Markdown>{post.body}</Markdown>
+            <Suspense fallback={<p>{stripMarkdown(post.body)}</p>}>
+              <Markdown>{post.body}</Markdown>
+            </Suspense>
           </div>
         )}
         {!full && post.body && !image && <p className="card__text">{stripMarkdown(post.body)}</p>}
