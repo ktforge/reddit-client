@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Header from './components/Header.jsx';
 import CommunityList from './components/CommunityList.jsx';
 import Drawer from './components/Drawer.jsx';
+import PostList from './components/PostList.jsx';
+import { mockPosts } from './data/mockPosts.js';
 import './App.css';
 
 function App() {
@@ -14,6 +16,11 @@ function App() {
     setMenuOpen(false);
   };
 
+  // home shows everything, otherwise only the picked community
+  const posts = activeCommunity
+    ? mockPosts.filter((p) => p.community.name === activeCommunity)
+    : mockPosts;
+
   return (
     <>
       <Header onMenuClick={() => setMenuOpen(true)} />
@@ -22,7 +29,7 @@ function App() {
       </Drawer>
       <div className="layout">
         <main>
-          <p>Showing: {activeCommunity ? `c/${activeCommunity}` : 'Home'}</p>
+          <PostList posts={posts} />
         </main>
         <aside className="layout__sidebar">
           <CommunityList active={activeCommunity} onSelect={handleSelect} />

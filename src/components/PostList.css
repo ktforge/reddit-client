@@ -1,0 +1,5 @@
+/* even spacing between cards */
+.post-list {
+  display: grid;
+  gap: 16px;
+}
