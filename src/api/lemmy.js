@@ -35,3 +35,11 @@ export async function getComments(postId) {
   const data = await request('/comment/list', params);
   return data.comments;
 }
+
+// posts matching a search term, inside one community when a name is passed
+export async function searchPosts(term, community) {
+  const params = { q: term, type_: 'Posts', sort: 'TopAll', limit: 20 };
+  if (community) params.community_name = community;
+  const data = await request('/search', params);
+  return data.posts;
+}

@@ -5,7 +5,16 @@ import EmptyState from './EmptyState.jsx';
 import './PostList.css';
 
 // picks what to show: skeletons, an error, an empty message, or the posts
-function PostList({ posts, status, onRetry, onHome, emptyTitle }) {
+function PostList({
+  posts,
+  status,
+  onRetry,
+  onHome,
+  emptyTitle,
+  emptyText = 'Try another community or check back later.',
+  emptyActionLabel = 'Back to Home',
+  onEmptyAction = onHome,
+}) {
   if (status === 'loading') {
     return (
       <section className="post-list" aria-busy="true" aria-label="Loading posts">
@@ -24,9 +33,9 @@ function PostList({ posts, status, onRetry, onHome, emptyTitle }) {
     return (
       <EmptyState
         title={emptyTitle}
-        text="Try another community or check back later."
-        actionLabel="Back to Home"
-        onAction={onHome}
+        text={emptyText}
+        actionLabel={emptyActionLabel}
+        onAction={onEmptyAction}
       />
     );
   }
