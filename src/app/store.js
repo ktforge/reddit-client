@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import postsReducer from '../features/posts/postsSlice.js';
+import detailReducer from '../features/detail/detailSlice.js';
 
-// comments get their own slice in the next step
 export const store = configureStore({
   reducer: {
     posts: postsReducer,
+    detail: detailReducer,
   },
 });

@@ -144,3 +144,12 @@
   color: var(--text);
   overflow: visible;
 }
+
+/* link out to the article a post is sharing */
+.card__source {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+  font-weight: 700;
+}

@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
-import { formatScore, timeAgo } from '../utils/format.js';
+import { formatScore, timeAgo, stripMarkdown } from '../utils/format.js';
+import Markdown from './Markdown.jsx';
 import './PostCard.css';
 
 // one post in the feed: votes, title, community, media or text, and footer
 function PostCard({ postView, full = false }) {
   const { post, creator, community, counts } = postView;
   // lemmy marks image links with a content type, otherwise fall back to the thumbnail
-  const image = post.url_content_type?.startsWith('image/') ? post.url : post.thumbnail_url;
+  const isImageLink = post.url_content_type?.startsWith('image/');
+  const image = isImageLink ? post.url : post.thumbnail_url;
 
   return (
     <article className={`card ${full ? 'card--full' : ''}`}>
@@ -29,8 +31,16 @@ function PostCard({ postView, full = false }) {
           <span className="card__community">c/{community.name}</span> · {timeAgo(post.published)}
         </p>
         {image && <img className="card__image" src={image} alt="" loading="lazy" />}
-        {post.body && (full || !image) && (
-          <p className={`card__text ${full ? 'card__text--full' : ''}`}>{post.body}</p>
+        {full && post.body && (
+          <div className="card__text card__text--full">
+            <Markdown>{post.body}</Markdown>
+          </div>
+        )}
+        {!full && post.body && !image && <p className="card__text">{stripMarkdown(post.body)}</p>}
+        {full && post.url && !isImageLink && (
+          <a className="card__source" href={post.url} target="_blank" rel="noopener noreferrer">
+            Open link ↗
+          </a>
         )}
         <footer className="card__footer">
           <span className="card__footer-votes">▲ {formatScore(counts.score)} ▼</span>

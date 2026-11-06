@@ -20,3 +20,13 @@ export function timeAgo(iso, now = Date.now()) {
   }
   return 'just now';
 }
+
+// rough plain text version of markdown for the short previews in the feed
+export function stripMarkdown(md = '') {
+  return md
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '') // drops images
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1') // links keep only their text
+    .replace(/[*_`>#~]/g, '') // drops formatting symbols
+    .replace(/\s+/g, ' ')
+    .trim();
+}
