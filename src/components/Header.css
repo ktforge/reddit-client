@@ -1,0 +1,52 @@
+/* stays at the top while you scroll */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10; /* keeps it above the post cards */
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header__dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* hidden on desktop, where the sidebar shows instead */
+.header__menu {
+  display: none;
+  font-size: 1.3rem;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+@media (max-width: 1023px) {
+  .header__menu {
+    display: block;
+  }
+
+  /* logo text drops on phones to give search more room */
+  .header__logo {
+    font-size: 0;
+  }
+}
