@@ -1,0 +1,55 @@
+.communities {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 8px;
+}
+
+.communities__title {
+  margin: 0 0 8px 12px;
+  font-size: 1rem;
+}
+
+/* strips the default bullets and indent */
+.communities__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.communities__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.communities__item:hover {
+  background: var(--bg);
+}
+
+.communities__item.is-active {
+  background: var(--accent-light);
+  font-weight: 700;
+}
+
+.communities__icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0; /* keeps the circle round when the name is long */
+}
+
+.is-active .communities__icon {
+  background: var(--accent);
+}

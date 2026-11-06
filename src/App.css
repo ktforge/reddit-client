@@ -1,6 +1,27 @@
-/* centers the page content and leaves room on the sides */
+/* posts on the left, sidebar on the right */
 .layout {
   max-width: 1100px;
   margin: 0 auto;
   padding: 24px 16px;
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* sidebar follows you down the page, just under the header */
+.layout__sidebar {
+  position: sticky;
+  top: 88px;
+}
+
+/* one column below desktop, the drawer replaces the sidebar */
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .layout__sidebar {
+    display: none;
+  }
 }
