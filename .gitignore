@@ -27,3 +27,7 @@ dist-ssr
 .env
 build/
 Thumbs.db
+
+# Playwright reports and recordings
+test-results/
+playwright-report/
